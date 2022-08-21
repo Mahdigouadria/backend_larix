@@ -150,7 +150,7 @@ const EmployeeController={
           
 
     
-          
+          //get all employee
           getAllEmployee:async(req,res)=>{
             try {
                 const employee = await EmployeeModel.find();
