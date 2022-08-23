@@ -10,7 +10,7 @@ const upload = require("../utils/multer");
 
  router.get("/allemployee",EmployeeController.getAllEmployee)
 
-
+ router.delete('/deletemployee/:id',EmployeeController.deleteEmployee)
 
 
  //router.delete('/deleteemployee/:id',auth,authAdmin,EmployeeController.deleteUser)

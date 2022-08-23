@@ -162,6 +162,39 @@ const EmployeeController={
             }
           },
 
+          //get employee (id)
+          deleteEmployee:async(req,res)=>{
+            const id=req.params.id
+            console.log({id});
+       
+            
+              //  res.status(200).json(vm.ApiResponse(true,200,"employee deleted successfuly"))
+              const user=   await EmployeeModel.findByIdAndDelete({_id:id})
+              if (!user) {
+              return res.status(404).json(vm.ApiResponse(true,404,"Employee not founded"))
+              }
+     
+              try {
+              
+                  await EmployeeModel.findByIdAndDelete({_id:req.params.id}).exec((err,em)=>{
+                  if (err) {
+                    res.status(400).json(vm.ApiResponse(false,400,err))      
+
+                  }else{
+                    return res.status(200).json(vm.ApiResponse(true,200,"Employee deleted successfuly"))
+
+                  }
+
+                })
+                    } catch (error) {
+                console.log( error.message)
+                return res.status(500).json(vm.ApiResponse(true,500,"server error"))
+            }
+
+            
+            
+          }
+
 
        
 

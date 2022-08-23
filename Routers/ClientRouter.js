@@ -4,7 +4,7 @@ const auth=require('../middleware/auth')
 const authAdmin=require('../middleware/authAdmin')
 const upload = require("../utils/multer");
  router.post('/addclient',upload.single("image"),ClientController.AddUser)
- router.get('/getallclients',auth,authAdmin,ClientController.getallclients)
+ router.get('/getallclients',ClientController.getallclients)
 
 
 
